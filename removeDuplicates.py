@@ -2,7 +2,7 @@
 __author__ = 'AprocySanae'
 __date__ = '15/6/24'
 
-def removeDuplicates(nums):
+def removeDuplicates0(nums):
     size = len(nums)
     if size < 2:
         return size
@@ -20,6 +20,24 @@ def removeDuplicates(nums):
     return count
 
 
+def removeDuplicates(nums):
+    size = len(nums)
+    if size < 2:
+        return size
+    preNum = nums[0]
+    index = 1
+    count = 1
+    while index < size:
+        currentNum = nums[index]
+        if not currentNum == preNum:
+            nums[count] = currentNum
+            count += 1
+            preNum = currentNum
+        index += 1
+    del nums[count:]
+    return count
+
+
 if __name__ == '__main__':
-    print removeDuplicates([1,1])
+    print removeDuplicates([1,1, 2])
 
