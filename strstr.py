@@ -46,7 +46,7 @@ def kmp0(haystack, needle):
     return search(haystack, needle)
 
 
-def kmp(haystack, needle):
+def kmp1(haystack, needle):
     def search(source, target):
         M = len(source)
         N = len(target)
@@ -98,7 +98,7 @@ def kmp(haystack, needle):
     return search(haystack, needle)
 
 
-def kmp2(haystack, needle):
+def kmp(haystack, needle):
     def search(source, target):
         M = len(source)
         N = len(target)
