@@ -34,8 +34,13 @@ def kmp0(haystack, needle):
             j+=1
         return dfa
     if not haystack:
-        return -1
+        if not needle:
+            return 0
+        else:
+            return -1
     if not needle:
+        return 0
+    if len(needle) > len(haystack):
         return -1
     dfa = build_dfa(haystack, needle)
     return search(haystack, needle)
@@ -57,6 +62,8 @@ def kmp(haystack, needle):
                 return i
             o = over[j]
             i = i+max(1, j-o)
+            if M-i<N:
+                return -1
         return -1
     def overlap(target):
         over = dict()
@@ -78,6 +85,15 @@ def kmp(haystack, needle):
                     count += 1
             over[o] = count
         return over
+    if not haystack:
+        if not needle:
+            return 0
+        else:
+            return -1
+    if not needle:
+        return 0
+    if len(needle) > len(haystack):
+        return -1
     over = overlap(needle)
     return search(haystack, needle)
 
@@ -87,7 +103,7 @@ def kmp2(haystack, needle):
         M = len(source)
         N = len(target)
         i = 0
-        o = 0
+        n = N
         while i < M:
             j = 0
             # dfa success advance
@@ -98,6 +114,8 @@ def kmp2(haystack, needle):
                 return i
             o = over[j]
             i = i+max(1, j-o)
+            if M-i<N:
+                return -1
         return -1
     def overlap(target):
         over = dict()
@@ -110,6 +128,15 @@ def kmp2(haystack, needle):
                 over[i+1] = over[over[i+1]-1]+1
             i+=1
         return over
+    if not haystack:
+        if not needle:
+            return 0
+        else:
+            return -1
+    if not needle:
+        return 0
+    if len(needle) > len(haystack):
+        return -1
     over = overlap(needle)
     return search(haystack, needle)
 
