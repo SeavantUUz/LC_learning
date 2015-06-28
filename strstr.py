@@ -2,7 +2,7 @@
 __author__ = 'AprocySanae'
 __date__ = '15/6/26'
 
-def kmp(haystack, needle):
+def kmp0(haystack, needle):
     def search(source, target):
         M = len(source)
         N = len(target)
@@ -41,7 +41,80 @@ def kmp(haystack, needle):
     return search(haystack, needle)
 
 
+def kmp(haystack, needle):
+    def search(source, target):
+        M = len(source)
+        N = len(target)
+        i = 0
+        o = 0
+        while i < M:
+            j = 0
+            # dfa success advance
+            while i+j < M and j<N and source[i+j] == target[j]:
+                j += 1
+            # match
+            if j == N:
+                return i
+            o = over[j]
+            i = i+max(1, j-o)
+        return -1
+    def overlap(target):
+        over = dict()
+        N = len(target)
+        over[0] = 0
+        for o in xrange(N):
+            i = 0
+            j=o
+            count = 0
+            while i< N and j>=0 and i<j:
+                if target[i] == target[j]:
+                    count += 2
+                    i+=1
+                    j-=1
+                else:
+                    break
+            else:
+                if j%2:
+                    count += 1
+            over[o] = count
+        return over
+    over = overlap(needle)
+    return search(haystack, needle)
+
+
+def kmp2(haystack, needle):
+    def search(source, target):
+        M = len(source)
+        N = len(target)
+        i = 0
+        o = 0
+        while i < M:
+            j = 0
+            # dfa success advance
+            while i+j < M and j<N and source[i+j] == target[j]:
+                j += 1
+            # match
+            if j == N:
+                return i
+            o = over[j]
+            i = i+max(1, j-o)
+        return -1
+    def overlap(target):
+        over = dict()
+        N = len(target)
+        i = 0
+        over[0] = -1
+        while i<N:
+            over[i+1] = over[i] + 1
+            while over[i+1] > 0 and target[i] != target[over[i+1]-1]:
+                over[i+1] = over[over[i+1]-1]+1
+            i+=1
+        return over
+    over = overlap(needle)
+    return search(haystack, needle)
+
+
 if __name__ == "__main__":
-    source = 'bcbaabacaababacaa'
-    target = 'cba'
+    source = 'babbbbb'
+    target = 'ccc'
     print kmp(source, target)
