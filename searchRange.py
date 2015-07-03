@@ -28,10 +28,6 @@ def searchRange(nums, target):
             left = mid + 1
         else:
             right = mid - 1
-    # if start == -1 and end != -1:
-    #     return [end, end]
-    # elif start != -1 and end == -1:
-    #     return [start, start]
     return [start, end]
 
 
