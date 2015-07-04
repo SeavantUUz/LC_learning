@@ -31,5 +31,3 @@ def searchRange(nums, target):
     return [start, end]
 
 
-if __name__ == '__main__':
-    print searchRange([1
