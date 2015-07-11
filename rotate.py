@@ -40,5 +40,5 @@ def rotate(matrix):
 
 
 if __name__ == '__main__':
-    rotate([[1]])
+    rotate([[1,2,3], [4,5,6], [7,8,9]])
 

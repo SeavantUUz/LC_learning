@@ -48,9 +48,8 @@ def permute(nums):
         else:
             dup_dict[t] = 1
             result.append(nums[:])
-
     return result
 
 if __name__ == '__main__':
-    print permute([-1,2,3,4])
+    print permute([1,2,3,4])
 

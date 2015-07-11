@@ -34,4 +34,4 @@ def permutations(nums):
     reverse(k+1, size-1)
 
 if __name__ == '__main__':
-    permutations([1,3,2])
+    permutations([1, 2, 3, 5])
