@@ -50,6 +50,37 @@ def rotateRight(head, k):
         p.next = None
         return head
 
+
+## 别人的解法，学着点！
+
+def rotateRight(head, k):
+        if not head or k == 0:
+            return head
+
+        slow = fast = head
+        length = 1
+
+        while fast and fast.next:
+            fast = fast.next
+            length += 1
+
+        k %= length
+        fast = head
+
+        while k:
+            fast = fast.next
+            k -= 1
+
+        while fast and fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        fast.next = head
+        head = slow.next
+        slow.next = None
+
+        return head
+
 if __name__ == '__main__':
     l1 = ListNode(1)
     l1.next = ListNode(2)
