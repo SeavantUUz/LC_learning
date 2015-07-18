@@ -26,5 +26,33 @@ def minimumPathSum(grid):
             return minimum
     return _path(M-1, N-1, grid[0][0])
 
+
+def minimumPathSum_iter(grid):
+    M = len(grid)
+    N = len(grid[0])
+    matrix=[[0 for y in range(N)] for x in range(M)]
+    matrix[0][0] = grid[0][0]
+    n = 1
+    index = 0
+    sum = 0
+    while index < M:
+        sum += grid[index][0]
+        matrix[index][0] = sum
+        index += 1
+    index = 0
+    sum = 0
+    while index < N:
+        sum += grid[0][index]
+        matrix[0][index] = sum
+        index += 1
+    while n < N:
+        m = 1
+        while m < M:
+            matrix[m][n] = min(matrix[m-1][n], matrix[m][n-1]) + grid[m][n]
+            m += 1
+        n += 1
+    return matrix[-1][-1]
+
 if __name__ == '__main__':
-    print minimumPathSum([[1, 2], [1, 1]])
+    # print minimumPathSum_iter([[1, 2], [1, 1]])
+    print minimumPathSum_iter([[1]])
