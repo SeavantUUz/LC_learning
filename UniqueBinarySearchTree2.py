@@ -2,6 +2,12 @@
 __author__ = 'AprocySanae'
 __date__ = '15/8/8'
 
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 def generateTrees(n):
     def build_tree(array):
         result = []
@@ -20,3 +26,9 @@ def generateTrees(n):
                     result.append(root)
         return result
     return build_tree(range(1, n+1))
+
+
+if __name__ == '__main__':
+    print len(generateTrees(5))
+    print len(generateTrees(6))
+    print len(generateTrees(7))
