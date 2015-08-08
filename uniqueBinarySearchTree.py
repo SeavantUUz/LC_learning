@@ -30,4 +30,4 @@ def numTrees(n):
 
 
 if __name__ == '__main__':
-    print numTrees(19)
+    print numTrees(22)
