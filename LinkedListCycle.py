@@ -17,6 +17,3 @@ def linked_list_cycle(head):
         return False
     return True
 
-
-if __name__ == '__main__':
-
