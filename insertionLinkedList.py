@@ -44,6 +44,23 @@ def insertionSortList(head):
                 pre.next = q
     return v_head.next
 
+# 这个比我的快,我好像知道原因,回头看一下
+def insertionSortList(self, head):
+    newhead = ListNode(0)
+    newhead.next = head
+    pre, cur = newhead, head
+    while cur:
+        if cur.next and cur.next.val < cur.val:
+            while pre.next and pre.next.val < cur.next.val:
+                pre = pre.next
+            tmp = pre.next
+            pre.next = cur.next
+            cur.next = cur.next.next
+            pre.next.next = tmp
+            pre = newhead
+        else:
+            cur = cur.next
+    return newhead.next
 
 if __name__ == '__main__':
     l1 = ListNode(1)
