@@ -13,4 +13,4 @@ def convertToTitle(n):
 
 
 if __name__ == '__main__':
-    print convertToTitle(58)
+    print convertToTitle(5888)
