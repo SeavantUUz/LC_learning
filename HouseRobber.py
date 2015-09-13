@@ -16,7 +16,7 @@ def rob0(nums):
     return result['max_sum']
 
 
-def rob(nums):
+def rob1(nums):
     if not nums:
         return 0
     length = len(nums)
@@ -38,6 +38,17 @@ def rob(nums):
             result[index] = max([h1, h2]) + nums[index]
             index += 1
         return max([result[-1], result[-2]])
+
+
+# 别人的解法，思路一样，但是处理更优雅
+def rob(self,nums):
+    dp={}
+    dp[0]=nums[0]
+    dp[1]=max(nums[0],nums[1])
+
+    for i in range(2,len(nums)):
+        dp[i] = max((dp[i-2]+nums[i]),dp[i-1])
+    return dp[len(nums)-1]
 
 
 if __name__ == '__main__':
