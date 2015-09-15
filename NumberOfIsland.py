@@ -30,7 +30,7 @@ def numIslands0(grid):
     return count
 
 
-# 他这个能过，我的不行，很奇怪，不知道主要的开销在哪里
+# 他这个能过，我的不行，很奇怪，不知道主要的开销在哪里, 原因是超时
 def numIslands(grid):
     grid=list([[int(j) for j in i] for i in grid])
     q=[]
