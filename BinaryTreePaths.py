@@ -20,22 +20,19 @@ class Solution(object):
         if not root:
             return []
         else:
-            self.helper(root, '')
+            self.helper(root, [])
         return self.result
 
 
     def helper(self, root, one_path):
         if not root:
             return
-        if not one_path:
-            one_path = str(root.val)
-        else:
-            one_path = one_path + '->{}'.format(root.val)
+        one_path.append(str(root.val))
         if not root.left and not root.right:
-            self.result.append(one_path)
+            self.result.append('->'.join(one_path))
         else:
-            self.helper(root.left, one_path)
-            self.helper(root.right, one_path)
+            self.helper(root.left, one_path[:])
+            self.helper(root.right, one_path[:])
 
 
 if __name__ == '__main__':
