@@ -1,6 +1,7 @@
 # coding: utf-8
 __author__ = 'AprocySanae'
 __date__ = '15/10/28'
+import time
 
 class Solution(object):
     def gameOfLife(self, board):
@@ -45,5 +46,4 @@ class Solution(object):
                 return 1
             else:
                 return 0
-
 
